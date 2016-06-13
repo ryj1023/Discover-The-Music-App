@@ -3,7 +3,7 @@
 var getMusic = function(tags){
 	$.ajax({
 			dataType: "jsonp",
-			url: 'http://www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
+			url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
 			type: "GET",
 	})
 
