@@ -2,9 +2,9 @@
 //ajax data is obtained and returned from API.
 var getMusic = function(tags){
 	$.ajax({
-			dataType: "jsonp",
-			url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
-			type: "GET",
+		dataType: "jsonp",
+		url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
+		type: "GET",
 	})
 	return tags;
 };
@@ -33,16 +33,16 @@ var showMusicResults = function(music) {
 }
 //displays iframe and discription when each link is clicked.
 $(document).on('click', '.band-name a', function(event) {
-		var _url = $(this).attr('href'),
-			description = $(this).attr('description');			
-		// Prevent from opening iframe in new tab
-		event.preventDefault();
-		$('iframe, h1').css('display', 'block');
-		$('band-info, h1').css('background-color', '#1976D2');
-		$('.band-info iframe').attr("src", _url);
-		$('.band-info h1').html(description);
-		var newBand = $('.band-info').clone()
-		return newBand;
+	var _url = $(this).attr('href'),
+	description = $(this).attr('description');			
+	// Prevent from opening iframe in new tab
+	event.preventDefault();
+	$('iframe, h1').css('display', 'block');
+	$('band-info, h1').css('background-color', '#1976D2');
+	$('.band-info iframe').attr("src", _url);
+	$('.band-info h1').html(description);
+	var newBand = $('.band-info').clone()
+	return newBand;
 });
 
 /*Function that runs when keyword is entered and search button clicked.
