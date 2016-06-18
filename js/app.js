@@ -12,13 +12,11 @@ var getMusic = function(tags){
 var callBackMusic = function(query){
 	var searchResults = showSearchResults(query.Similar.Results.length);
 	$('.counter').append(searchResults);
-
 	$.each(query.Similar.Results, function(i, item){
 		var music = showMusicResults(item);
 		$('.results').append(music);
 	});	
 }
-
 var showSearchResults = function(resultNum){
 	var results = resultNum + ' results for <strong> ' + $("input[name='query']").val(); + ' </strong>';
 	return results;
