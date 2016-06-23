@@ -1,0 +1,41 @@
+{
+  "name": "discover-the-music-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "mkdir": "mkdir -p build",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:image && npm run build:js",
+    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
+    "clean": "rm -rf build",
+    "build:html": "npm run clean:html && cp index.html build/",
+    "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
+    "clean:html": "rm -f build/index.html",
+    "build:css": "npm run clean:css && lessc --source-map css/index.less build/$npm_package_name.$npm_package_version.css",
+    "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
+    "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map",
+    "build:js": "npm run clean:js && cp js/app.js build/",
+    "watch:js": "npm run build:js && chokidar js/app.js -c 'npm run build:js'",
+    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
+    "build:image": "npm run clean:image && cp *gif build/ &&  cp *png build/",
+    "clean:image": "rm -f build/*.gif && rm -f build/*.png "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryj1023/Discover-The-Music-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryj1023/Discover-The-Music-App/issues"
+  },
+  "homepage": "https://github.com/ryj1023/Discover-The-Music-App#readme",
+  "dependencies": {
+    "jquery": "^3.0.0"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "less": "^2.7.1",
+    "webpack": "^1.13.1"
+  }
+}
