@@ -1,5 +1,4 @@
 @blue: #1976D2;
-
 body, html{
 	height: 100%;
 	overflow: auto;
@@ -17,7 +16,9 @@ body, html{
 	position: fixed;
 	top: 0;
 	z-index: 100;
-
+}
+.field-set{
+	border-style: none;
 }
 .content-wrapper{
 	height: 100%;
@@ -25,13 +26,12 @@ body, html{
 	overflow: auto;
 }
 .resultsWrapper{
-	padding-top: 2%;
+	padding-top: 1%;
 	padding-bottom: 8%;
 	background-color: #2196F3;
 	height: 100%;
 	width: 50%;
 	float: left;
-
 }
 .band-name-input{
 	width: 50%;
@@ -62,7 +62,6 @@ body, html{
 	height: 100%;
 	width: 100%;
 	float: left;
-    
 	  h1 {
 	    font-family: 'Anton', sans-serif;
 	    font-size: 60px;
@@ -78,80 +77,168 @@ body, html{
 		color: #FFFFFF;
 	  }
 	}
-
+	.band-name{
+		height: 20px;
+		width: 50%;
+		background-color: white;
+		border-radius: 25px;
+	    border: 2px solid;
+	    color: black;
+	.band-links{
+		text-decoration: none;
+		color: black;
+	}
+}
+.band-name:hover, .band-name:active {
+	background-color: red;
+	font-size: 120%;
+	cursor: pointer;
+}
 .background-guitar{
 	padding-top: 10%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 300px;
-	height: 400px;
-	
+	height: 400px;	
 }
-
 .result {
 	font-family: 'Fjalla+One', sans-serif;
 	font-size: 17px;
-	text-align: left;
-	padding-top: 2%;
+	text-align: center;
+	padding-top: 1%;
 	color: #FFFFFF;
 }
 a {
 	color: white;
 }
-
-.band-info {
+.band-info {	
 	padding-top: 2%;
 	padding-bottom: 8%;
 	background-image: url("../band-background-image.png");
 	background-size: cover;
 	background-position: center;
-	height: 100%;
+	height: 98%;
 	width: 50%;
 	float: right;
 	overflow: auto;
-  
+	h2{
+		font-family: 'Fjalla+One', sans-serif;
+	    color: white;
+	    font-size: 1.5em;
+	    padding-left: 2%;
+	    padding-right: 2%;
+	    background-color: #1976D2 !important; 
+	    margin-top: -3%;
+	    margin-right: 1%;
+	    margin-bottom: 3%;
+	    margin-left: 1%;
+	    padding-top: 1%;
+	    padding-bottom: 1%;
+	    border-radius: 25px;
+	    border: 2px solid;
+	    text-align: center;
+	}
 	 h1,iframe {
 		display: none;
 	  }
-  
 	  h1 {
 	    font-family: 'Fjalla+One', sans-serif;
 	    color: white;
 	    font-size: 12px;
 	    padding-left: 2%;
 	    padding-right: 2%;
-	    background-color: #1976D2;
-	    margin: 4%;
+	    background-color: #1976D2 !important; 
+	    margin-top: -2%;
+	    margin-right: 1%;
+	    margin-bottom: 1%;
+	    margin-left: 1%;
 	    padding-top: 1%;
 	    padding-bottom: 1%;
 	    border-radius: 25px;
 	    border: 2px solid;
 	}
-	  
 	 iframe {
 		border: 0px;
-		margin: auto; 
-		height: 60%;
-		width: 90%;
+		margin-top: 1%;
+	    margin-right: 1%;
+	    margin-bottom: 2%;
+	    margin-left: 1%; 
+		height: 40%;
+		width: 97%;
 	} 
+	a{		   
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    color: white;
+    text-decoration: none;
+    background-color: #1976D2;
+    margin-left: 2%;
+    cursor: pointer;
+	}
+	.no-tours{
+		position: relative; 
+   		width: 100%;
+	}
+	.seats{
+		border: 0px;
+		margin-top: 1%;
+	    margin-right: 1%;
+	    margin-bottom: 2%;
+	    margin-left: 1%; 
+		height: 40%;
+		width: 97%;
+		position: relative;	
+	}
+	.sorry-text{
+		font-size: 25px;
+	    font-family: 'Fjalla+One', sans-serif;
+	    color: white;
+	    position: absolute;
+	    top: 5%;
+	    text-align: center;
+	    width: 100%;
+	    z-index: 1;
+	    	span{
+	   color: white; 
+	   font: bold 24px/45px Helvetica, Sans-Serif; 
+	   letter-spacing: -1px;  
+	   background: rgb(0, 0, 0); /* fallback color */
+	   background: rgba(0, 0, 0, 0.7);
+	   padding: 10px;
+		}
+	}
 }
-
 .bandOrArtist {
 	font-family: 'Anton', sans-serif;
 	font-size: 60px;
 	padding-top: 10%;
 	text-align: center;
 	color: #FFFFFF;
-
 }
-
 .hidden {
 	display: none;
 }
-
 .counter {
 	font-size: 30px;
 	color: white;
 	text-align: center;
 }
+  html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 300px;
+        width: 97%;
+        margin-bottom: 1%;
+      }
+   .artist-image{
+   	img{
+   	height: 20px;
+   	width: 20px;
+   }
+  }
