@@ -8,9 +8,6 @@ $('.no-tours').hide();
 var getLocation = function() {
 	    if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(showPosition);
-
-	        alert('got location')
-
 	    } else {
 	          alert("Geolocation is not supported by this browser.");
 	    }

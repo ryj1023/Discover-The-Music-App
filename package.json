@@ -1,4 +1,5 @@
-{
+
+  {
   "name": "discover-the-music-app",
   "version": "1.0.0",
   "description": "",
@@ -17,8 +18,8 @@
     "build:js": "npm run clean:js && cp js/app.js build/",
     "watch:js": "npm run build:js && chokidar js/app.js -c 'npm run build:js'",
     "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
-    "build:image": "npm run clean:image && cp *gif build/ &&  cp *png build/",
-    "clean:image": "rm -f build/*.gif && rm -f build/*.png "
+    "build:image": "npm run clean:image && cp *gif build/ &&  cp *png build/ &&  cp *jpg build/",
+    "clean:image": "rm -f build/*.gif && rm -f build/*.png && rm -f build/*.jpg "
   },
   "repository": {
     "type": "git",
