@@ -20,7 +20,7 @@ var getLocation = function() {
 		    	getTourDates(artistName, location);
 		}
 var getTourDates = function(artistName, location){
-	$.getJSON("http://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
+	$.getJSON("https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
 	 function(result) {
 	 	if(result){
 	   displayTourDates(location, result);
