@@ -1,7 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 body,
 html {
   height: 100%;
-  overflow: auto;
 }
 * {
   margin: auto;
@@ -112,6 +118,9 @@ html {
 }
 a {
   color: white;
+}
+.band-info-wrapper {
+  height: 100%;
 }
 .band-info {
   padding-top: 2%;
