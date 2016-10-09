@@ -2,8 +2,9 @@
 
 html { 
 	box-sizing: border-box;
+	min-height: 100%;
 } 
-	 *:before, *:after {
+*:before, *:after {
 	  box-sizing: inherit; 
 	}
 body, html{
@@ -33,11 +34,13 @@ body, html{
 	overflow: auto;
 }
 .resultsWrapper{
-	padding-top: 1%;
-	padding-bottom: 8%;
+	overflow: auto;
+	padding-top: 100px;
+	//padding-bottom: 8%;
 	background-color: #2196F3;
-	height: 100%;
-	width: 50%;
+	//height: 100%;
+	min-height: 100%;
+	width: 100%;
 	float: left;
 }
 .band-name-input{
@@ -64,57 +67,66 @@ body, html{
 	    }
 }
 .results {
-	padding-left: 2%;
-	background-color: #2196F3;
-	height: 100%;
+	padding-top: 2%;
+	background-image: url(../band-background-image.png);
+	background-size: cover;
+	background-position: center;
+	min-height: 100%;
 	width: 100%;
 	float: left;
 	  h1 {
 	    font-family: 'Anton', sans-serif;
-	    font-size: 60px;
-	    padding-top: 10%;
+	    font-size: 75px;
+	    padding-top: 20%;
 	    text-align: center;
-	    color: #FFFFFF;
+	    //color: #FFFFFF;
+	    color: black;
+	    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	    }
 	  h2 { 
 		font-family: 'Fjalla+One', sans-serif;
-		font-size: 17px;
+		font-size: 20px;
 		text-align: center;
-		padding-top: 2%;
-		color: #FFFFFF;
+		padding-top: 1%;
+		color: black;
+		text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	  }
 	}
 	.band-name{
+		text-decoration: none;
 		height: 20px;
-		width: 50%;
+		width: 30%;
+		padding: 1%;
 		background-color: white;
 		border-radius: 25px;
 	    border: 2px solid;
 	    color: black;
-	.band-links{
+}
+.band-links{
 		text-decoration: none;
 		color: black;
+		height: 100%;
+		padding: 1%;
 	}
-}
 .band-name:hover, .band-name:active {
 	background-color: red;
 	font-size: 120%;
 	cursor: pointer;
 }
-.background-guitar{
-	padding-top: 10%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 300px;
-	height: 400px;	
-}
+// .background-guitar{
+// 	padding-top: 1%;
+// 	display: block;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	width: 300px;
+// 	height: 400px;	
+// }
 .result {
-	font-family: 'Fjalla+One', sans-serif;
-	font-size: 17px;
-	text-align: center;
-	padding-top: 1%;
-	color: #FFFFFF;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: black;
+    list-style: none;
 }
 a {
 	color: white;
@@ -124,31 +136,27 @@ a {
 	height: 100%;
 }
 
-.band-info {	
-	padding-top: 2%;
+.band-info {
+	display: none;	
+	padding-top: 8%;
 	padding-bottom: 8%;
-	background-image: url("../band-background-image.png");
-	background-size: cover;
-	background-position: center;
-	height: 98%;
-	width: 50%;
+	background-color: #2196F3;
+	width: 100%;
 	float: right;
-	overflow: auto;
+	overflow: visible;
 	h2{
 		font-family: 'Fjalla+One', sans-serif;
 	    color: white;
 	    font-size: 1.5em;
+	    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	    padding-left: 2%;
 	    padding-right: 2%;
-	    background-color: #1976D2 !important; 
-	    margin-top: -3%;
 	    margin-right: 1%;
 	    margin-bottom: 3%;
 	    margin-left: 1%;
-	    padding-top: 1%;
+	    padding-top: 5%;
 	    padding-bottom: 1%;
 	    border-radius: 25px;
-	    border: 2px solid;
 	    text-align: center;
 	}
 	 h1,iframe {
@@ -157,29 +165,36 @@ a {
 	  h1 {
 	    font-family: 'Fjalla+One', sans-serif;
 	    color: white;
-	    font-size: 12px;
-	    padding-left: 2%;
-	    padding-right: 2%;
-	    background-color: #1976D2 !important; 
-	    margin-top: -2%;
-	    margin-right: 1%;
-	    margin-bottom: 1%;
-	    margin-left: 1%;
+	    font-size: 15px; 
+	    margin-top: 0%;
+	    margin-right: 25%;
+	    margin-bottom: -2%;
+	    margin-left: 25%;
 	    padding-top: 1%;
 	    padding-bottom: 1%;
 	    border-radius: 25px;
-	    border: 2px solid;
+	}
+	.morecontent span {
+    	display: none;
+	}
+
+	.morelink, .less{
+		font-size: 15px;
+		margin-top: 6%;
+	    color: white;
+	    text-decoration: none;
+	    background-color: #1976D2;
+	    margin-left: 2%;
+	    cursor: pointer;
 	}
 	 iframe {
 		border: 0px;
 		margin-top: 1%;
-	    margin-right: 1%;
 	    margin-bottom: 2%;
-	    margin-left: 1%; 
-		height: 40%;
-		width: 97%;
+	    margin-left: 25%; 
+		width: 50%;
 	} 
-	a{		   
+	.get-tickets{		   
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 1%;
@@ -187,7 +202,7 @@ a {
     color: white;
     text-decoration: none;
     background-color: #1976D2;
-    margin-left: 2%;
+    margin-left: 47%;
     cursor: pointer;
 	}
 	.no-tours{
@@ -196,13 +211,13 @@ a {
 	}
 	.seats{
 		border: 0px;
-		margin-top: 1%;
+	    margin-top: 1%;
 	    margin-right: 1%;
 	    margin-bottom: 2%;
-	    margin-left: 1%; 
-		height: 40%;
-		width: 97%;
-		position: relative;	
+	    margin-left: 25%;
+	    height: 100%;
+	    width: 50%;
+	    position: relative;	
 	}
 	.sorry-text{
 		font-size: 25px;
@@ -211,7 +226,8 @@ a {
 	    position: absolute;
 	    top: 5%;
 	    text-align: center;
-	    width: 100%;
+	    left: 30%;
+    	width: 36%;
 	    z-index: 1;
 	    	span{
 	   color: white; 
@@ -234,9 +250,11 @@ a {
 	display: none;
 }
 .counter {
-	font-size: 30px;
-	color: white;
-	text-align: center;
+    position: relative;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
   html, body {
         height: 100%;
@@ -245,7 +263,7 @@ a {
       }
       #map {
         height: 300px;
-        width: 97%;
+        width: 50%;
         margin-bottom: 1%;
       }
    .artist-image{
@@ -254,10 +272,33 @@ a {
    	width: 20px;
    }
   }
-
+  .loading{
+  	padding-left: 35%;
+  }
   @media only screen and (max-width: 800px){
+  	.content-wrapper{
+  	margin-top: 100px;
+    overflow: auto;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+  	}
+  	.band-info-wrapper{
+  	height: 100%;
+    width: 100%;
+    float: right;
+  	}
+  	.band-info{
+  		width: 100%;
+  		overflow: visible;
+  	}
+  	.resultsWrapper{
+		width:100%;
+  	}
+	.content-wrapper{
 
-
-
-
+	}
+	.band-name-input{
+		width: 90%;
+	}
   }

@@ -82,14 +82,14 @@ var getMusic = function(tags){
 	return tags;
 };
 //callback function for the API data thats finds the length of the data and diplays search result number in the counter div
-	var callBackMusic = function(query){
+var callBackMusic = function(query){
 		var tagName = query.Similar.Info[0].Name;
 		var searchResults = showSearchResults(query.Similar.Results.length, tagName);
-		$('.counter').append(searchResults);
 		$.each(query.Similar.Results, function(i, item){
 			var music = showMusicResults(item);
-			$('.results').append(music);
+			$('.display').append(music);
 	});	
+		$('.counter').append(searchResults);		
 }
 var showSearchResults = function(resultNum, resultName){
 	if($("input[name='query']").val() == ""){
@@ -103,7 +103,7 @@ var showSearchResults = function(resultNum, resultName){
 // clones search results and results divs, adds attributes, and returns data.
 var showMusicResults = function(music) {
 	var result = $('.searchResults .result').clone();
-	var bandName = result.find('.band-name a');	
+	var bandName = result.find('.band-name');	
 	bandName.attr('name', music.Name);
 	bandName.attr('href', music.yUrl);
 	bandName.attr('description', music.wTeaser);
@@ -111,45 +111,75 @@ var showMusicResults = function(music) {
 	return result;
 }
 //displays iframe and discription when each link is clicked.
-	$(document).on('click', '.band-name a', function(event) {
+	$(document).on('click', '.band-name', function(event) {
 		$('.band-info').css('background-image', 'none')
-		$('.band-info').css('background-color', '#B6B6B6');
+		$('.band-info').css('background-color', '#2196F3');
 		var _url = $(this).attr('href'),
-		description = $(this).attr('description'),
+		description = $(this).attr('description');
 		artistName = $(this).attr('name');
 		$('#artistName').val(artistName);
+		$('.map').hide();
+		$('.no-tours').hide();
 		$('.loading').show();
 		getLocation();
 		// Prevent from opening iframe in new tab
 		event.preventDefault();
 		$('iframe, h1').css('display', 'block');
-		$('band-info, h1').css('background-color', '#1976D2');
+		$('.band-info').css('display', 'block');
 		$('.band-info iframe').attr("src", _url);
-		$('.band-info h1').html(description);
 		$('.band-info h2').html(artistName);
+		$('.band-info h1').html(description);
+		readMore(description);
 		$('.band-info h2').show();
 		$('.band-info a').show();
-		$('.band-info a').html("Get Tickets");
-		var newBand = $('.band-info').clone()
-		return newBand;
-	});
+		$('.get-tickets').html("Get Tickets");
 
+		$('html, body').animate({
+		    scrollTop: $(".band-info").offset().top
+		}, 1000);
+	});
+var readMore = function(){
+	var showChar = 200; // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Show more >";
+    var lesstext = "< Show less";
+    $('.band-info h1').each(function() {
+        var content = $(this).html();
+	        if(content.length > showChar) {
+	            var c = content.substr(0, showChar);
+	            var h = content.substr(showChar, content.length - showChar);
+	            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink"> <p style="background-color: #1976D2; margin-right: 84%;">' + moretext + '</p></a></span>';
+	            $(this).html(html);
+	        }
+    });
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+}
 /*Function that runs when keyword is entered and search button clicked.
 The results and counter classes are cleared and the value typed by user is stored.
 */
-
 	$('.band-name-input').submit(function(e) {
 		e.preventDefault();
 		//zero out results of a previous search
-		$('.results').html('');
+		$('.display').html('');
 		$('.counter').html('');
 		// get the value of the tags the user submitted
 		var tags = $(this).find("input[name='query']").val();
 		getMusic(tags);
+		$('.results').css('padding-top', '150px');
 		return false;
 	}); 
 var initMap = function(myLatLng, events) {
-	$('.map').show();
 	myLatLng = {lat: parseFloat(myLatLng.latitude), lng: parseFloat(myLatLng.longitude)};
     var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
@@ -170,7 +200,7 @@ var initMap = function(myLatLng, events) {
   			$('.loading').hide();
   			$('.map').show();
 }
-	function clearOverlays() {
+var clearOverlays = function() {
 	  for (var i = 0; i < markers.length; i++ ){
 	    markers[i].setMap(null);
 	  }
