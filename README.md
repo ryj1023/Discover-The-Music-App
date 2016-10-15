@@ -4,7 +4,10 @@ Discover bands and artists portfolio project
 
 <h1>Screenshots</h1>
 
-
+![Screenshot](https://github.com/ryj1023/Discover-The-Music-App/blob/master/Screenshot3.png)
+![Screenshot](https://github.com/ryj1023/Discover-The-Music-App/blob/master/Screenshot1.png)
+![Screenshot](https://github.com/ryj1023/Discover-The-Music-App/blob/master/Screenshot2.png)
+![Screenshot](https://github.com/ryj1023/Discover-The-Music-App/blob/master/Screenshot4.png)
 
 <h1>Overview</h1>
 
