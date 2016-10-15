@@ -1,4 +1,3 @@
-
 var artistName = "";
 var markers = [];
 $('.band-info a').hide();
@@ -79,7 +78,7 @@ var getMusic = function(tags){
 		url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
 		type: "GET",
 	})
-	return tags;
+	//return tags;
 };
 //callback function for the API data thats finds the length of the data and diplays search result number in the counter div
 var callBackMusic = function(query){
@@ -177,7 +176,6 @@ The results and counter classes are cleared and the value typed by user is store
 		var tags = $(this).find("input[name='query']").val();
 		getMusic(tags);
 		$('.results').css('padding-top', '150px');
-		return false;
 	}); 
 var initMap = function(myLatLng, events) {
 	myLatLng = {lat: parseFloat(myLatLng.latitude), lng: parseFloat(myLatLng.longitude)};
