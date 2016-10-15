@@ -19,15 +19,11 @@ This app provides a platform to people that are into new music, but not interest
 
 <h1>UX</h1>
 
-The initial mobile wireframes can be seen here: https://ryj1023.github.io/Discover-The-Music-App/build/
-
-<h1>Initial Wireframes</h1>
-
 This app is designed for the user to be able to freely scroll through articles with a mobile-first approach. The app is simple and easy to navigate, making it useful and user friendly.
 
 <h1>Working Prototype</h1>
 
-You can access a working prototype of the app here:
+You can access a working prototype of the app here: https://ryj1023.github.io/Discover-The-Music-App/build/
 
 <h1>Technical</h1>
 
