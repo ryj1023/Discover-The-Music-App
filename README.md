@@ -19,7 +19,7 @@ This app provides a platform to people that are into new music, but not interest
 
 <h1>UX</h1>
 
-The initial mobile wireframes can be seen below:
+The initial mobile wireframes can be seen here: https://ryj1023.github.io/Discover-The-Music-App/build/
 
 <h1>Initial Wireframes</h1>
 
