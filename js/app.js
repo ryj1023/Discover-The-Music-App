@@ -11,11 +11,7 @@ var getLocation = function() {
 	          alert("Geolocation is not supported by this browser.");
 	    }
 	}
-<<<<<<< HEAD
-var showPosition = function(position){
-=======
 var showPosition = function(position) {
->>>>>>> gh-pages
 			$('.loading').show();
 		    var location = {latitude: position.coords.latitude,
 		    		    	longitude: position.coords.longitude};
@@ -187,20 +183,6 @@ var initMap = function(myLatLng, events) {
     zoom: 4,
     center: myLatLng
   });
-<<<<<<< HEAD
-  	clearOverlays();
-  for(var i = 0; i <= events.length; i++){
-	var event = events[i];
-		if(event && event.venue){
-			  	var marker = new google.maps.Marker({
-			    position: { lat: parseFloat(event.venue.latitude), lng: parseFloat(event.venue.longitude)},
-			    map: map,
-			    title: event.title
-			  });
-			  	markers.push(marker);
-  			}
-  		}		
-=======
 	clearOverlays();
 	  for(var i = 0; i <= events.length; i++){
 			var event = events[i];
@@ -213,7 +195,6 @@ var initMap = function(myLatLng, events) {
 				  	markers.push(marker);
 	  		}
 	  	}		
->>>>>>> gh-pages
   			$('.loading').hide();
   			$('.map').show();
 }
