@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 node_modules/less
 node_modules/webpack
 node_modules/chokidar-cli
