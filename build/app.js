@@ -11,7 +11,7 @@ var getLocation = function() {
 	          alert("Geolocation is not supported by this browser.");
 	    }
 	}
-		function showPosition(position) {
+var showPosition = function(position) {
 			$('.loading').show();
 		    var location = {latitude: position.coords.latitude,
 		    		    	longitude: position.coords.longitude};
