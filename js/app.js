@@ -108,33 +108,36 @@ var showMusicResults = function(music) {
 	bandName.text(music.Name);
 	return result;
 }
+$( document ).ready(function() {
 //displays iframe and discription when each link is clicked.
-$(document).on('click', '.result li', function(event) {
-	$('.band-info').css('background-image', 'none')
-	$('.band-info').css('background-color', '#2196F3');
-	var _url = $(this).attr('href'),
-	description = $(this).attr('description');
-	artistName = $(this).attr('name');
-	$('#artistName').val(artistName);
-	$('.map').hide();
-	$('.no-tours').hide();
-	$('.loading').show();
-	getLocation();
-	// Prevent from opening iframe in new tab
-	event.preventDefault();
-	$('iframe, h1').css('display', 'block');
-	$('.band-info').css('display', 'block');
-	$('.band-info iframe').attr("src", _url);
-	$('.band-info h2').html(artistName);
-	$('.band-info h1').html(description);
-	readMore(description);
-	$('.band-info h2').show();
-	$('.band-info a').show();
-	$('.get-tickets').html("Get Tickets");
+	$(document).on('click', '.result li', function(event) {
+		$('.band-info').css('background-image', 'none')
+		$('.band-info').css('background-color', '#2196F3');
+		var _url = $(this).attr('href'),
+		description = $(this).attr('description');
+		artistName = $(this).attr('name');
+		$('#artistName').val(artistName);
+		$('.map').hide();
+		$('.no-tours').hide();
+		$('.loading').show();
+		getLocation();
+		// Prevent from opening iframe in new tab
+		event.preventDefault();
+		$('iframe, h1').css('display', 'block');
+		$('.band-info').css('display', 'block');
+		$('.band-info iframe').attr("src", _url);
+		$('.band-info h2').html(artistName);
+		$('.band-info h1').html(description);
+		readMore(description);
+		$('.band-info h2').show();
+		$('.band-info a').show();
+		$('.get-tickets').html("Get Tickets");
 
-	$('html, body').animate({
-	    scrollTop: $(".band-info").offset().top
-	}, 1000);
+		$('html, body').animate({
+		    scrollTop: $(".band-info").offset().top
+		}, 1000);
+	});
+
 });
 var readMore = function(){
 	var showChar = 200; // How many characters are shown by default
