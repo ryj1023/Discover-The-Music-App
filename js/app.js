@@ -109,7 +109,7 @@ var showMusicResults = function(music) {
 	return result;
 }
 //displays iframe and discription when each link is clicked.
-$(document).on('click', '.band-name', function(event) {
+$(document).on('click', '.result li', function(event) {
 	$('.band-info').css('background-image', 'none')
 	$('.band-info').css('background-color', '#2196F3');
 	var _url = $(this).attr('href'),
