@@ -108,37 +108,9 @@ var showMusicResults = function(music) {
 	bandName.text(music.Name);
 	return result;
 }
-$( document ).ready(function() {
-	console.log('test');
+$(document).ready(function() {
 //displays iframe and discription when each link is clicked.
-	// $(document).on('click', '.result li', function(event) {
-	// 	$('.band-info').css('background-image', 'none')
-	// 	$('.band-info').css('background-color', '#2196F3');
-	// 	var _url = $(this).attr('href'),
-	// 	description = $(this).attr('description');
-	// 	artistName = $(this).attr('name');
-	// 	$('#artistName').val(artistName);
-	// 	$('.map').hide();
-	// 	$('.no-tours').hide();
-	// 	$('.loading').show();
-	// 	getLocation();
-	// 	// Prevent from opening iframe in new tab
-	// 	event.preventDefault();
-	// 	$('iframe, h1').css('display', 'block');
-	// 	$('.band-info').css('display', 'block');
-	// 	$('.band-info iframe').attr("src", _url);
-	// 	$('.band-info h2').html(artistName);
-	// 	$('.band-info h1').html(description);
-	// 	readMore(description);
-	// 	$('.band-info h2').show();
-	// 	$('.band-info a').show();
-	// 	$('.get-tickets').html("Get Tickets");
-
-	// 	$('html, body').animate({
-	// 	    scrollTop: $(".band-info").offset().top
-	// 	}, 1000);
-	// });
-		$(document).on('vclick', '.result li', function(event) {
+	$(document).on('click', '.result li', function(event) {
 		$('.band-info').css('background-image', 'none')
 		$('.band-info').css('background-color', '#2196F3');
 		var _url = $(this).attr('href'),
@@ -160,7 +132,6 @@ $( document ).ready(function() {
 		$('.band-info h2').show();
 		$('.band-info a').show();
 		$('.get-tickets').html("Get Tickets");
-
 		$('html, body').animate({
 		    scrollTop: $(".band-info").offset().top
 		}, 1000);
