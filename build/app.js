@@ -1,9 +1,5 @@
 var artistName = "";
 var markers = [];
-$('.band-info a').hide();
-$('.band-info h2').hide();
-$('.loading').hide();
-$('.no-tours').hide();
 var getLocation = function() {
 	    if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(showPosition);
@@ -42,35 +38,6 @@ var displayTourDates = function(location, result){
 		$('.map').hide();
 	}
 }
-	$( "#artist" ).on("input", function() {
-		var input = this.value;
-	});
-$(function() {
-	$( "#artist" ).autocomplete({
-        minLength: 1,
-		 source: function (request, response) {
-            $.ajax({
-                url: 'https://api.spotify.com/v1/search',
-                data: {
-                    q: $("#artist").val(),
-                    type: 'artist',
-                    limit: 10
-                },
-                success: function (data) { 
-                	response(data.artists.items)	    
-                }
-            });
-        }
-    }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
-         return $( "<li></li>" ).click(function(){
-         		$('#artist').val(item.name);
-         		$('.band-name-input').submit()
-         })
-            .data( "item.autocomplete", item )
-              .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
-            .appendTo( ul );
-};
- });
 //ajax data is obtained and returned from API.
 var getMusic = function(tags){
 	$.ajax({
@@ -109,6 +76,10 @@ var showMusicResults = function(music) {
 	return result;
 }
 $(document).ready(function() {
+	$('.band-info a').hide();
+	$('.band-info h2').hide();
+	$('.loading').hide();
+	$('.no-tours').hide();
 //displays iframe and discription when each link is clicked.
 	$(document).on('click', '.result li', function(event) {
 		$('.band-info').css('background-image', 'none')
@@ -136,6 +107,61 @@ $(document).ready(function() {
 		    scrollTop: $(".band-info").offset().top
 		}, 1000);
 	});
+	/*Function that runs when keyword is entered and search button clicked.
+	The results and counter classes are cleared and the value typed by user is stored.
+	*/
+	$('.band-name-input').submit(function(e) {
+		e.preventDefault();
+		//zero out results of a previous search
+		$('.display').html('');
+		$('.counter').html('');
+		// get the value of the tags the user submitted
+		var tags = $(this).find("input[name='query']").val();
+		getMusic(tags);
+		$('.results').css('padding-top', '150px');
+	});
+$(function() {
+$( "#artist" ).autocomplete({
+    minLength: 1,
+	 source: function (request, response) {
+        $.ajax({
+            url: 'https://api.spotify.com/v1/search',
+            data: {
+                q: $("#artist").val(),
+                type: 'artist',
+                limit: 10
+            },
+            success: function (data) { 
+            	response(data.artists.items)	    
+            }
+        });
+    }
+}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
+     return $( "<li></li>" ).click(function(){
+     		$('#artist').val(item.name);
+     		$('.band-name-input').submit()
+     })
+        .data( "item.autocomplete", item )
+          .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
+        .appendTo( ul );
+		};
+	});
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } 
+        else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+    $( "#artist" ).on("input", function() {
+		var input = this.value;
+	});
 });
 var readMore = function(){
 	var showChar = 200; // How many characters are shown by default
@@ -151,33 +177,7 @@ var readMore = function(){
 	            $(this).html(html);
 	        }
     });
-    $(".morelink").click(function(){
-        if($(this).hasClass("less")) {
-            $(this).removeClass("less");
-            $(this).html(moretext);
-        } 
-        else {
-            $(this).addClass("less");
-            $(this).html(lesstext);
-        }
-        $(this).parent().prev().toggle();
-        $(this).prev().toggle();
-        return false;
-    });
 }
-/*Function that runs when keyword is entered and search button clicked.
-The results and counter classes are cleared and the value typed by user is stored.
-*/
-$('.band-name-input').submit(function(e) {
-	e.preventDefault();
-	//zero out results of a previous search
-	$('.display').html('');
-	$('.counter').html('');
-	// get the value of the tags the user submitted
-	var tags = $(this).find("input[name='query']").val();
-	getMusic(tags);
-	$('.results').css('padding-top', '150px');
-}); 
 var initMap = function(myLatLng, events) {
 	myLatLng = {lat: parseFloat(myLatLng.latitude), lng: parseFloat(myLatLng.longitude)};
     var map = new google.maps.Map(document.getElementById('map'), {
