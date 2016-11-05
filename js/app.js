@@ -25,8 +25,8 @@ var getTourDates = function(artistName, location){
 var displayTourDates = function(location, result){
 	if(result && result[0]){
 		var tourDates = result[0].artists[0].facebook_tour_dates_url;
-		$('.band-info a').attr('href', tourDates);
-		$('.band-info a').attr('target', '_blank');
+		$('.get-tickets').attr('href', tourDates);
+		$('.get-tickets').attr('target', '_blank');
 		$('.no-tours').hide();
 		$('.get-tickets').show();
 		initMap(location, result);
@@ -107,9 +107,9 @@ $(document).ready(function() {
 		    scrollTop: $(".band-info").offset().top
 		}, 1000);
 	});
-	/*Function that runs when keyword is entered and search button clicked.
-	The results and counter classes are cleared and the value typed by user is stored.
-	*/
+/*Function that runs when keyword is entered and search button clicked.
+The results and counter classes are cleared and the value typed by user is stored.
+*/
 	$('.band-name-input').submit(function(e) {
 		e.preventDefault();
 		//zero out results of a previous search
@@ -145,8 +145,27 @@ $( "#artist" ).autocomplete({
           .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
         .appendTo( ul );
 		};
+	});  
+$( "#artist" ).on("input", function() {
+		var input = this.value;
 	});
-    $(".morelink").click(function(){
+});
+var readMore = function(){
+	var showChar = 200; // How many characters are shown by default
+    var ellipsestext = "...";
+    var moretext = "Show more >";
+    var lesstext = "< Show less";
+    $('.article').each(function() {
+        var content = $(this).html();
+	        if(content.length > showChar) {
+	            var c = content.substr(0, showChar);
+	            var h = content.substr(showChar, content.length - showChar);
+	            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink"> <p style="background-color: #1976D2; margin-right: 84%;">' + moretext + '</p></a></span>';
+	            $(this).html(html);
+	        }
+    });
+    	$(".morelink").click(function(){
+		console.log('test')
         if($(this).hasClass("less")) {
             $(this).removeClass("less");
             $(this).html(moretext);
@@ -159,25 +178,8 @@ $( "#artist" ).autocomplete({
         $(this).prev().toggle();
         return false;
     });
-    $( "#artist" ).on("input", function() {
-		var input = this.value;
-	});
-});
-var readMore = function(){
-	var showChar = 200; // How many characters are shown by default
-    var ellipsestext = "...";
-    var moretext = "Show more >";
-    var lesstext = "< Show less";
-    $('.band-info h1').each(function() {
-        var content = $(this).html();
-	        if(content.length > showChar) {
-	            var c = content.substr(0, showChar);
-	            var h = content.substr(showChar, content.length - showChar);
-	            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink"> <p style="background-color: #1976D2; margin-right: 84%;">' + moretext + '</p></a></span>';
-	            $(this).html(html);
-	        }
-    });
-}
+
+} 
 var initMap = function(myLatLng, events) {
 	myLatLng = {lat: parseFloat(myLatLng.latitude), lng: parseFloat(myLatLng.longitude)};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -205,6 +207,5 @@ var clearOverlays = function() {
   }
 	  markers.length = 0;
 	}
-
 
 
