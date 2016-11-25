@@ -1,5 +1,4 @@
-
-  {
+{
   "name": "discover-the-music-app",
   "version": "1.0.0",
   "description": "",
@@ -32,6 +31,7 @@
   },
   "homepage": "https://github.com/ryj1023/Discover-The-Music-App#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "jquery": "^3.0.0"
   },
   "devDependencies": {

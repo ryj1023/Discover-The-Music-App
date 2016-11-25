@@ -1,3 +1,4 @@
+
 var artistName = "";
 var markers = [];
 var getLocation = function() {
@@ -110,7 +111,7 @@ $(document).ready(function() {
 /*Function that runs when keyword is entered and search button clicked.
 The results and counter classes are cleared and the value typed by user is stored.
 */
-	$('.band-name-input').submit(function(e) {
+	$('.form-group').submit(function(e) {
 		e.preventDefault();
 		//zero out results of a previous search
 		$('.display').html('');
@@ -121,13 +122,13 @@ The results and counter classes are cleared and the value typed by user is store
 		$('.results').css('padding-top', '150px');
 	});
 $(function() {
-$( "#artist" ).autocomplete({
+$( "#focusedInput" ).autocomplete({
     minLength: 1,
 	 source: function (request, response) {
         $.ajax({
             url: 'https://api.spotify.com/v1/search',
             data: {
-                q: $("#artist").val(),
+                q: $("#focusedInput").val(),
                 type: 'artist',
                 limit: 10
             },
@@ -138,15 +139,15 @@ $( "#artist" ).autocomplete({
     }
 }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
      return $( "<li></li>" ).click(function(){
-     		$('#artist').val(item.name);
-     		$('.band-name-input').submit()
+     		$('#focusedInput').val(item.name);
+     		$('.form-group').submit()
      })
         .data( "item.autocomplete", item )
           .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
         .appendTo( ul );
 		};
 	});  
-$( "#artist" ).on("input", function() {
+$( "#focusedInput" ).on("input", function() {
 		var input = this.value;
 	});
 });
