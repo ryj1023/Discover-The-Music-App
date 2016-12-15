@@ -17,7 +17,15 @@ This app is for anyone that's really into music (isn't everybody anyway?). Final
 
 This app provides a platform to people that are into new music, but not interested in the dealing with repetitive songs and commercials in order to do so. With this app you can search for a series of bands or aritsts that cater to your prefered genre of music.
 
-<h1>UX</h1>
+<h1>Functionality</h1>
+
+The app's functionality includes:
+
+* Discriptive information displayed from various bands and artists from Tastekid's API.
+* Interactive datalist-stlye dropdown using predictions based on an API from Spotify.
+* Using Google Location and Bands In Town's API, the app displays any tour dates available and links to buy tickets.
+* Displaying number of search results to the user for each query with a max count of 20.
+* Dynamic autoscroll functionality to redirect user to information on a selected band or artist.
 
 
 <h1>Working Prototype</h1>
@@ -26,8 +34,9 @@ You can access a working prototype of the app here: https://ryj1023.github.io/Di
 
 <h1>Technical</h1>
 
-The app is built using AngularJS for the front-end. The routes are all done in the front-end, and there are multiple views with a custom directive each display scenario. There are two API calls, one is used with a custom service and an AJAX call to obtain the quotes from the Random Famous Quotes API, and another custom service to onbtain the New York Times articles from the site's API on a conditional basis. Angular's ng-view is used based on what the user does. The default view is the homepage, which displays content based on pre-defined topics. When the user does a custom search, or selects another article content option, the ng-view is changed in response to the event and show the relative data. Angular Materials card feature is on of the dependencies used to display each article. A custom directive is returned to display the data. 
+The app is built in jQuery uses AJAX calls to *Tastekid*, *Bands In Town*, and *Spotify*'s APIs to return data. It is fully responsive and fit for any device. 
 
 <h1>Upcoming Features</h1>
 
-Some of the upcoming features include user profiles with custom settings, using NodeJS, MongoDB, and ExpressJS. There will also be a blog section which allows the user to create a profile and publish their own work on any topic of their choosing. 
+* User search storage for with back end functionality using the MEAN stack.
+* Additional search results if a user is looking for a specific band or artist.
