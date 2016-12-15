@@ -17,7 +17,15 @@ This app is for anyone that's really into music (isn't everybody anyway?). Final
 
 This app provides a platform to people that are into new music, but not interested in the dealing with repetitive songs and commercials in order to do so. With this app you can search for a series of bands or aritsts that cater to your prefered genre of music.
 
-<h1>UX</h1>
+The app's functionality includes:
+
+* Analysis of the 100 most relevant articles returned by *The Guardian* on any given search term.
+* Listing the top 6 external domains cited by *The Guardian* on any given search query with links to those sites.
+* A histogram plot of the relative popularity of those top 6 sites.
+* Listing the top 6 bylines associated with any given search query with Google search links associated to those bylines.
+* Detailing the total number of anchor links within the articles returned by *The Guardian*'s Open Platform API.
+* Detailing the total number of unique domains associated with those links.
+* Suppressing internal links to *The Guardian* and key social media sites from the overall results.
 
 
 <h1>Working Prototype</h1>
