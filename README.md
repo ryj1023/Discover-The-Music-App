@@ -34,8 +34,9 @@ You can access a working prototype of the app here: https://ryj1023.github.io/Di
 
 <h1>Technical</h1>
 
-The app is built in jQuery uses AJAX calls to *TasteKid*, *Bands In Town*, and *Spotify*'s APIs to return data. It is fully responsive and fit for any device. 
+The app is built in jQuery uses AJAX calls to *Tastekid*, *Bands In Town*, and *Spotify*'s APIs to return data. It is fully responsive and fit for any device. 
 
 <h1>Upcoming Features</h1>
 
-Some of the upcoming features include user profiles with custom settings, using NodeJS, MongoDB, and ExpressJS. There will also be a blog section which allows the user to create a profile and publish their own work on any topic of their choosing. 
+* User search storage for with back end functionality using the MEAN stack.
+* Additional search results if a user is looking for a specific band or artist.
