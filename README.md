@@ -34,7 +34,7 @@ You can access a working prototype of the app here: https://ryj1023.github.io/Di
 
 <h1>Technical</h1>
 
-The app is built using AngularJS for the front-end. The routes are all done in the front-end, and there are multiple views with a custom directive each display scenario. There are two API calls, one is used with a custom service and an AJAX call to obtain the quotes from the Random Famous Quotes API, and another custom service to onbtain the New York Times articles from the site's API on a conditional basis. Angular's ng-view is used based on what the user does. The default view is the homepage, which displays content based on pre-defined topics. When the user does a custom search, or selects another article content option, the ng-view is changed in response to the event and show the relative data. Angular Materials card feature is on of the dependencies used to display each article. A custom directive is returned to display the data. 
+The app is built in jQuery uses AJAX calls to *TasteKid*, *Bands In Town*, and *Spotify*'s APIs to return data. It is fully responsive and fit for any device. 
 
 <h1>Upcoming Features</h1>
 
