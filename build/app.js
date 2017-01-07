@@ -1,3 +1,4 @@
+
 var artistName = "";
 var markers = [];
 var getLocation = function() {
@@ -11,8 +12,8 @@ var showPosition = function(position) {
 			$('.loading').show();
 		    var location = {latitude: position.coords.latitude,
 		    		    	longitude: position.coords.longitude};
-		    	var artistName = $('#artistName').val();
-		    	getTourDates(artistName, location);
+	    	var artistName = $('#artistName').val();
+	    	getTourDates(artistName, location);
 		}
 var getTourDates = function(artistName, location){
 	$.getJSON("https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
@@ -50,6 +51,8 @@ var getMusic = function(tags){
 var callBackMusic = function(query){
 		var tagName = query.Similar.Info[0].Name;
 		var searchResults = showSearchResults(query.Similar.Results.length, tagName);
+		var searchedBand = showMusicResults(query.Similar.Info[0])
+		$('.display').append(searchedBand);
 		$.each(query.Similar.Results, function(i, item){
 			var music = showMusicResults(item);
 			$('.display').append(music);
@@ -60,8 +63,8 @@ var showSearchResults = function(resultNum, resultName){
 	if($("input[name='query']").val() == ""){
 		var results = resultNum + ' results for <strong> ' + resultName + ' </strong>';
 	}
-		else{
-			var results = resultNum + ' results for <strong> ' + $("input[name='query']").val(); + ' </strong>';
+	else{
+		var results = resultNum + ' results for <strong> ' + $("input[name='query']").val(); + ' </strong>';
 		}
 	return results;
 };
@@ -110,7 +113,7 @@ $(document).ready(function() {
 /*Function that runs when keyword is entered and search button clicked.
 The results and counter classes are cleared and the value typed by user is stored.
 */
-	$('.band-name-input').submit(function(e) {
+	$('.form-group').submit(function(e) {
 		e.preventDefault();
 		//zero out results of a previous search
 		$('.display').html('');
@@ -121,13 +124,13 @@ The results and counter classes are cleared and the value typed by user is store
 		$('.results').css('padding-top', '150px');
 	});
 $(function() {
-$( "#artist" ).autocomplete({
+$( "#focusedInput" ).autocomplete({
     minLength: 1,
 	 source: function (request, response) {
         $.ajax({
             url: 'https://api.spotify.com/v1/search',
             data: {
-                q: $("#artist").val(),
+                q: $("#focusedInput").val(),
                 type: 'artist',
                 limit: 10
             },
@@ -138,15 +141,15 @@ $( "#artist" ).autocomplete({
     }
 }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
      return $( "<li></li>" ).click(function(){
-     		$('#artist').val(item.name);
-     		$('.band-name-input').submit()
+     		$('#focusedInput').val(item.name);
+     		$('.form-group').submit()
      })
         .data( "item.autocomplete", item )
           .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
         .appendTo( ul );
 		};
 	});  
-$( "#artist" ).on("input", function() {
+$( "#focusedInput" ).on("input", function() {
 		var input = this.value;
 	});
 });

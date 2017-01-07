@@ -39,4 +39,6 @@ The app is built in jQuery uses AJAX calls to *Tastekid*, *Bands In Town*, and *
 <h1>Upcoming Features</h1>
 
 * User search storage for with back end functionality using the MEAN stack.
-* Additional search results if a user is looking for a specific band or artist. 
+
+* Additional search results if a user is looking for a specific band or artist.
+
