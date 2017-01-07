@@ -51,6 +51,8 @@ var getMusic = function(tags){
 var callBackMusic = function(query){
 		var tagName = query.Similar.Info[0].Name;
 		var searchResults = showSearchResults(query.Similar.Results.length, tagName);
+		var searchedBand = showMusicResults(query.Similar.Info[0])
+		$('.display').append(searchedBand);
 		$.each(query.Similar.Results, function(i, item){
 			var music = showMusicResults(item);
 			$('.display').append(music);
