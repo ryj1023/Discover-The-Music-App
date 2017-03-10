@@ -14,8 +14,8 @@
     "build:css": "npm run clean:css && lessc --source-map css/index.less build/$npm_package_name.$npm_package_version.css",
     "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
     "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map",
-    "build:js": "npm run clean:js && cp js/app.js build/",
-    "watch:js": "npm run build:js && chokidar js/app.js -c 'npm run build:js'",
+    "build:js": "npm run clean:js && cp js/*.js build/",
+    "watch:js": "npm run build:js && chokidar js/*.js -c 'npm run build:js'",
     "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
     "build:image": "npm run clean:image && cp *gif build/ &&  cp *png build/ &&  cp *jpg build/",
     "clean:image": "rm -f build/*.gif && rm -f build/*.png && rm -f build/*.jpg "
