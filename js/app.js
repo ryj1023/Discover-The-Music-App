@@ -28,16 +28,23 @@ var displayTourDates = function(location, result){
 		var tourDates = result[0].artists[0].facebook_tour_dates_url;
 		$('.get-tickets').attr('href', tourDates);
 		$('.get-tickets').attr('target', '_blank');
-		$('.no-tours').hide();
-		$('.get-tickets').show();
+		showTours();
 		initMap(location, result);
 	}
 	else{
+		noTours();
+	}
+}
+function showTours(){
+		$('.no-tours').hide();
+		$('.get-tickets').show();
+}
+
+function noTours(){
 		$('.loading').hide();
 		$('.no-tours').show();
 		$('.get-tickets').hide();
 		$('.map').hide();
-	}
 }
 //ajax data is obtained and returned from API.
 var getMusic = function(tags){
@@ -79,50 +86,66 @@ var showMusicResults = function(music) {
 	return result;
 }
 $(document).ready(function() {
-	$('.band-info a').hide();
-	$('.band-info h2').hide();
-	$('.loading').hide();
-	$('.no-tours').hide();
+	hideBandInfo()
 //displays iframe and discription when each link is clicked.
 	$(document).on('click', '.result li', function(event) {
-		$('.band-info').css('background-image', 'none')
-		$('.band-info').css('background-color', '#2196F3');
+		addBandCSS();
+		showBandInfo();
+		getLocation();
+		// Prevent from opening iframe in new tab
+		event.preventDefault();
 		var _url = $(this).attr('href'),
 		description = $(this).attr('description');
 		artistName = $(this).attr('name');
 		$('#artistName').val(artistName);
-		$('.map').hide();
-		$('.no-tours').hide();
-		$('.loading').show();
-		getLocation();
-		// Prevent from opening iframe in new tab
-		event.preventDefault();
-		$('iframe, h1').css('display', 'block');
-		$('.band-info').css('display', 'block');
-		$('.band-info iframe').attr("src", _url);
+	 	$('.band-info iframe').attr("src", _url);
 		$('.band-info h2').html(artistName);
 		$('.band-info h1').html(description);
 		readMore(description);
-		$('.band-info h2').show();
-		$('.band-info a').show();
 		$('.get-tickets').html("Get Tickets");
 		$('html, body').animate({
 		    scrollTop: $(".band-info").offset().top
 		}, 1000);
 	});
+	function hideBandInfo(){
+		$('.band-info a').hide();
+		$('.band-info h2').hide();
+		$('.loading').hide();
+		$('.no-tours').hide();
+	}
+	function showBandInfo(){
+		$('.band-info h2').show();
+		$('.band-info a').show();
+		$('.map').hide();
+		$('.no-tours').hide();
+		$('.loading').show();
+	}
+
+	function addBandCSS(){
+		$('.band-info').css('background-image', 'none')
+		$('.band-info').css('background-color', '#2196F3');
+		$('iframe, h1').css('display', 'block');
+		$('.band-info').css('display', 'block');
+	}
+
+
 /*Function that runs when keyword is entered and search button clicked.
 The results and counter classes are cleared and the value typed by user is stored.
 */
 	$('.form-group').submit(function(e) {
 		e.preventDefault();
-		//zero out results of a previous search
-		$('.display').html('');
-		$('.counter').html('');
+		//clear cache results of a previous search
+		cacheResults();
 		// get the value of the tags the user submitted
 		var tags = $(this).find("input[name='query']").val();
 		getMusic(tags);
 		$('.results').css('padding-top', '150px');
 	});
+
+	function cacheResults(){
+		$('.display').html('');
+		$('.counter').html('');
+	}
 $(function() {
 $( "#focusedInput" ).autocomplete({
     minLength: 1,
@@ -168,7 +191,6 @@ var readMore = function(){
 	        }
     });
     	$(".morelink").click(function(){
-		console.log('test')
         if($(this).hasClass("less")) {
             $(this).removeClass("less");
             $(this).html(moretext);
@@ -201,8 +223,11 @@ var initMap = function(myLatLng, events) {
 				  	markers.push(marker);
 	  		}
 	  	}		
-  			$('.loading').hide();
-  			$('.map').show();
+	  	showMap();
+}
+function showMap(){
+	$('.loading').hide();
+  	$('.map').show();
 }
 var clearOverlays = function() {
   for (var i = 0; i < markers.length; i++ ){
