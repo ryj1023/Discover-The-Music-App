@@ -2,7 +2,7 @@
   "name": "discover-the-music-app",
   "version": "1.0.0",
   "description": "",
-  "main": "js/app.js",
+  "main": "js/server.js",
   "scripts": {
     "mkdir": "mkdir -p build",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:image && npm run build:js",
