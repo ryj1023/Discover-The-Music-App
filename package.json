@@ -32,7 +32,9 @@
   "homepage": "https://github.com/ryj1023/Discover-The-Music-App#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "jquery": "^3.0.0"
+    "cookie-parser": "^1.4.3",
+    "jquery": "^3.0.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
