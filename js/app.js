@@ -147,35 +147,40 @@ The results and counter classes are cleared and the value typed by user is store
 		$('.counter').html('');
 	}
 $(function() {
-$( "#focusedInput" ).autocomplete({
-    minLength: 1,
-	 source: function (request, response) {
-        $.ajax({
-            url: 'https://api.spotify.com/v1/search',
-            data: {
-                q: $("#focusedInput").val(),
-                type: 'artist',
-                limit: 10
-            },
-            success: function (data) { 
-            	response(data.artists.items)	    
-            }
-        });
-    }
-}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
-     return $( "<li></li>" ).click(function(){
-     		$('#focusedInput').val(item.name);
-     		$('.form-group').submit()
-     })
-        .data( "item.autocomplete", item )
-          .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
-        .appendTo( ul );
-		};
-	});  
-$( "#focusedInput" ).on("input", function() {
-		var input = this.value;
-	});
-});
+
+// $( "#focusedInput" ).autocomplete({
+// // 	Client ID
+// // 1477dd268434476fa067b97c618573d5
+// // Client Secret
+// // b659abbe6d354267833920c37d88a499
+//     minLength: 1,
+// 	 source: function (request, response) {
+//         $.ajax({
+//             url: 'https://api.spotify.com/v1/search',
+//             data: {
+//                 q: $("#focusedInput").val(),
+//                 type: 'artist',
+//                 limit: 10
+//             },
+//             success: function (data) { 
+//             	response(data.artists.items)	    
+//             }
+//         });
+//     }
+// }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
+//      return $( "<li></li>" ).click(function(){
+//      		$('#focusedInput').val(item.name);
+//      		$('.form-group').submit()
+//      })
+//         .data( "item.autocomplete", item )
+//           .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
+//         .appendTo( ul );
+// 		};
+// 	});  
+// $( "#focusedInput" ).on("input", function() {
+// 		var input = this.value;
+// 	});
+// });
 var readMore = function(){
 	var showChar = 200; // How many characters are shown by default
     var ellipsestext = "...";
