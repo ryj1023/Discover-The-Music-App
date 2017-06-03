@@ -150,40 +150,40 @@ The results and counter classes are cleared and the value typed by user is store
 		$('.display').html('');
 		$('.counter').html('');
 	}
-$(function() {
-var client_id = '1477dd268434476fa067b97c618573d5'; // Your client id
-var client_secret = 'b659abbe6d354267833920c37d88a499'; // Your secret
-var redirect_uri = 'localhost:8888'; // Your redirect uri
+// $(function() {
+// var client_id = '1477dd268434476fa067b97c618573d5'; // Your client id
+// var client_secret = 'b659abbe6d354267833920c37d88a499'; // Your secret
+// var redirect_uri = 'localhost:8888'; // Your redirect uri
 
-$( "#focusedInput" ).autocomplete({
-// 	Client ID
-// 1477dd268434476fa067b97c618573d5
-// Client Secret
-// b659abbe6d354267833920c37d88a499
-        minLength: 1,
-	 source: function (request, response) {
-        $.ajax({
-            url: 'https://api.spotify.com/v1/search',
-            data: {
-                q: $("#focusedInput").val(),
-                type: 'artist',
-                limit: 10
-            },
-            success: function (data) { 
-            	response(data.artists.items)	    
-            }
-        });
-    }
-}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
-     return $( "<li></li>" ).click(function(){
-     		$('#focusedInput').val(item.name);
-     		$('.form-group').submit()
-     })
-        .data( "item.autocomplete", item )
-          .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
-        .appendTo( ul );
-		};
-	});  
+// $( "#focusedInput" ).autocomplete({
+// // 	Client ID
+// // 1477dd268434476fa067b97c618573d5
+// // Client Secret
+// // b659abbe6d354267833920c37d88a499
+//         minLength: 1,
+// 	 source: function (request, response) {
+//         $.ajax({
+//             url: 'https://api.spotify.com/v1/search',
+//             data: {
+//                 q: $("#focusedInput").val(),
+//                 type: 'artist',
+//                 limit: 10
+//             },
+//             success: function (data) { 
+//             	response(data.artists.items)	    
+//             }
+//         });
+//     }
+// }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
+//      return $( "<li></li>" ).click(function(){
+//      		$('#focusedInput').val(item.name);
+//      		$('.form-group').submit()
+//      })
+//         .data( "item.autocomplete", item )
+//           .append( "<a class='artist-image'>" + item.name + "<br>" + '<img src=' + item.images[0].url + '>' + "</a>" )
+//         .appendTo( ul );
+// 		};
+// 	});  
 $( "#focusedInput" ).on("input", function() {
 		var input = this.value;
 	});
